@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1A2B 猜數字</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>1A2B 猜數字</h1>
+      <details class="rules">
+        <summary>遊戲規則</summary>
+        <ul>
+          <li>電腦隨機產生 4 位數字，每位互不相同（可能以 0 開頭）。</li>
+          <li>輸入你的 4 位數猜測，每位也必須互不相同。</li>
+          <li><strong>A</strong> = 數字與位置都對；<strong>B</strong> = 數字對但位置錯。</li>
+          <li>猜到 <code>4A0B</code> 即勝利，嘗試次數越少越好。</li>
+        </ul>
+      </details>
+    </header>
+
+    <section class="status">
+      <div class="status-item">
+        <span class="label">嘗試次數</span>
+        <span id="attempts" class="value">0</span>
+      </div>
+      <div class="status-item">
+        <span class="label">個人最佳</span>
+        <span id="best" class="value">—</span>
+      </div>
+    </section>
+
+    <form id="guess-form" class="guess-form" autocomplete="off">
+      <input
+        id="guess-input"
+        type="text"
+        maxlength="4"
+        inputmode="numeric"
+        pattern="[0-9]{4}"
+        placeholder="輸入 4 位數字"
+        aria-label="猜測"
+      />
+      <button type="submit">送出</button>
+    </form>
+
+    <p id="error" class="error" role="alert" aria-live="polite"></p>
+
+    <section id="win-banner" class="win-banner" hidden>
+      <p id="win-message"></p>
+      <button id="restart-btn" type="button">再來一局</button>
+    </section>
+
+    <section class="history">
+      <h2>歷史紀錄</h2>
+      <ol id="history-list"></ol>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
